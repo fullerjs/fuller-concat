@@ -8,7 +8,7 @@ var dependencies = [];
 var verbose;
 var fileTools;
 
-var JS = function(fuller, options) {
+var JS = function(fuller, plan) {
 	if(!verbose) {
 		verbose = fuller.verbose;
 	}
@@ -17,13 +17,13 @@ var JS = function(fuller, options) {
 		fileTools = fuller.getTool('files');
 	}
 
-	this.tree = options.plan;
+	this.tree = plan.files;
 	this.dev = fuller.o.dev;
 
 	this.src = path.join(fuller.home, fuller.o.src, 'js');
 	this.dst = path.join(fuller.home, fuller.o.dst);
 
-	this.tools = fuller.loadTools(options.tools);
+	this.tools = fuller.loadTools(plan.tools);
 };
 
 JS.prototype.buildDependencies = function() {

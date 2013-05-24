@@ -2,7 +2,7 @@
 	"name": "fuller-js",
 	"version": "0.0.1",
 	"description": "Fuller plugin: Javascript building.",
-	"keywords": ["js", "fuller", "commonJS", "automation"],
+	"keywords": ["js", "fuller", "build", "automation"],
 	"author": "Alexey Novikov (http://2dubs.com)",
 	"preferGlobal": true,
 	"private": false,
@@ -14,6 +14,6 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git@github.com:velocityzen/fuller.git"
+		"url": "git@github.com:fullerjs/fuller-js.git"
 	}
 }

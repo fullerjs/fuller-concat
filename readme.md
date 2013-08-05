@@ -1,5 +1,6 @@
 # Fuller #
-## Build everything with right tool##
+**Build everything with right tool**
 
-## Javascript building tool for Mr. Fuller ##
+## File concatination tool for Mr. Fuller ##
+[For more info about go there](https://github.com/fullerjs/fuller)
 

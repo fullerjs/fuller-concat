@@ -1,8 +1,9 @@
 {
-	"name": "fuller-js",
-	"version": "0.0.1",
-	"description": "Fuller plugin: Javascript building.",
-	"keywords": ["js", "fuller", "build", "automation"],
+	"name": "fuller-concat",
+	"version": "0.0.2",
+	"license" : "BSD",
+	"description": "Fuller concatenation tool.",
+	"keywords": ["concatenation", "fuller", "build", "automation"],
 	"author": "Alexey Novikov (http://2dubs.com)",
 	"preferGlobal": true,
 	"private": false,
@@ -14,6 +15,6 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git@github.com:fullerjs/fuller-js.git"
+		"url": "git@github.com:fullerjs/fuller-concat.git"
 	}
 }

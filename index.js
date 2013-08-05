@@ -8,7 +8,7 @@ var dependencies = [];
 var verbose;
 var fileTools;
 
-var JS = function(fuller, plan) {
+var Concat = function(fuller, plan) {
 	if(!verbose) {
 		verbose = fuller.verbose;
 	}
@@ -17,20 +17,20 @@ var JS = function(fuller, plan) {
 		fileTools = fuller.getTool('files');
 	}
 
-	this.tree = plan.files;
+	this.tasks = plan.tasks;
 	this.dev = fuller.o.dev;
 
-	this.src = path.join(fuller.home, fuller.o.src, 'js');
-	this.dst = path.join(fuller.home, fuller.o.dst);
+	this.src = fuller.pathes.src;
+	this.dst = fuller.pathes.dst;
 
 	this.tools = fuller.loadTools(plan.tools);
 };
 
-JS.prototype.buildDependencies = function() {
+Concat.prototype.buildDependencies = function() {
 	var i, j, files;
 
-	for(i in this.tree) {
-		files = Array.isArray(this.tree[i]) ? this.tree[i] : this.tree[i].src;
+	for(i in this.tasks) {
+		files = Array.isArray(this.tasks[i]) ? this.tasks[i] : this.tasks[i].src;
 
 		for(j in files) {
 			fileTools.addDependence(dependencies, files[j], i);
@@ -38,7 +38,7 @@ JS.prototype.buildDependencies = function() {
 	}
 };
 
-JS.prototype.buildOne = function(srcPath, src, dst, cb) {
+Concat.prototype.buildOne = function(srcPath, src, dst, cb) {
 	var self = this, bricks, p, a;
 
 	fileTools.mkdirp(path.dirname(dst), function(err, path){
@@ -61,20 +61,20 @@ JS.prototype.buildOne = function(srcPath, src, dst, cb) {
 	});
 };
 
-JS.prototype.build = function(cb) {
+Concat.prototype.build = function(cb) {
 	var floor;
-	for(floor in this.tree) {
+	for(floor in this.tasks) {
 		verbose.log("Building".green, path.join(this.dst, floor));
 		this.buildOne(
 			this.src,
-			this.tree[floor],
+			this.tasks[floor],
 			path.join(this.dst, floor),
 			cb
 		);
 	}
 };
 
-JS.prototype.watch = function(cb) {
+Concat.prototype.watch = function(cb) {
 	var self =this;
 
 	this.buildDependencies();
@@ -88,7 +88,7 @@ JS.prototype.watch = function(cb) {
 			verbose.log("Building".green, filesToBuild[f]);
 			self.buildOne(
 				self.src,
-				self.tree[filesToBuild[f]],
+				self.tasks[filesToBuild[f]],
 				path.join(self.dst, filesToBuild[f])
 			);
 		}
@@ -99,4 +99,4 @@ JS.prototype.watch = function(cb) {
 };
 
 
-module.exports = JS;
+module.exports = Concat;

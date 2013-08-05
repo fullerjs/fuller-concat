@@ -79,7 +79,7 @@ Concat.prototype.watch = function(cb) {
 
 	this.buildDependencies();
 
-	fileTools.watchFiles( this.src, dependencies, function(event, filename){
+	fileTools.watchFiles( this.src, dependencies, function(filename){
 		var f, filesToBuild = dependencies[path.normalize(filename.substr(self.src.length + 1))];
 
 		verbose.log("Changed".red, filename);
@@ -93,7 +93,7 @@ Concat.prototype.watch = function(cb) {
 			);
 		}
 
-		cb && cb(event, filename);
+		cb && cb(filename);
 
 	});
 };

@@ -93,7 +93,7 @@ Concat.prototype.watch = function(cb) {
 			);
 		}
 
-		cb && cb(filename);
+		cb && cb(null, filename);
 
 	});
 };

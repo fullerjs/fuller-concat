@@ -2,7 +2,7 @@
 	"name": "fuller-concat",
 	"version": "0.0.2",
 	"license" : "BSD",
-	"description": "Fuller concatenation tool.",
+	"description": "Fuller tool: concatenation files",
 	"keywords": ["concatenation", "fuller", "build", "automation"],
 	"author": "Alexey Novikov (http://2dubs.com)",
 	"preferGlobal": true,

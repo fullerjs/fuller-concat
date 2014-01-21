@@ -18,7 +18,7 @@ var Concat = function(fuller, plan) {
 	}
 
 	this.tasks = plan.tasks;
-	this.dev = fuller.o.dev;
+	this.dev = fuller.options.dev;
 
 	this.src = fuller.pathes.src;
 	this.dst = fuller.pathes.dst;

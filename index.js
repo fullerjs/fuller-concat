@@ -18,12 +18,12 @@ var Concat = function(fuller, plan) {
 	}
 
 	this.tasks = plan.tasks;
-	this.dev = fuller.options.dev;
+	this.dev = plan.defaults.dev;
 
-	this.src = fuller.pathes.src;
-	this.dst = fuller.pathes.dst;
+	this.src = plan.defaults.src;
+	this.dst = plan.defaults.dst;
 
-	this.tools = fuller.loadTools(plan.tools);
+	this.tools = fuller.loadTools(plan.tools, plan.defaults);
 };
 
 Concat.prototype.buildDependencies = function() {

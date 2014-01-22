@@ -1,6 +1,6 @@
 {
 	"name": "fuller-concat",
-	"version": "0.0.2",
+	"version": "0.2.0",
 	"license" : "BSD",
 	"description": "Fuller tool: concatenation files",
 	"keywords": ["concatenation", "fuller", "build", "automation"],

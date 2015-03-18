@@ -2,9 +2,9 @@
   "name": "fuller-src-files",
   "version": "0.3.0",
   "license": "MIT",
-  "description": "Fuller tool: file concatenation source",
+  "description": "Fuller tool: multiple files source",
   "keywords": [
-    "concatenation",
+    "glob",
     "file",
     "source",
     "fuller",
@@ -12,17 +12,16 @@
     "automation"
   ],
   "author": "Alexey Novikov (http://2dubs.com)",
-  "preferGlobal": true,
-  "private": false,
   "engines": {
     "node": "~0.12.0",
     "iojs": "^1.0.0"
   },
   "dependencies": {
-    "coleccionista": "~0.1.0"
+    "glob-all": "^3.0.1",
+    "fuller-material-file": "~0.3.0"
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:fullerjs/fuller-src-files.git"
+    "url": "git@github.com:fullerjs/src-files.git"
   }
 }

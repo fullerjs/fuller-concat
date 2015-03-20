@@ -22,6 +22,10 @@ SrcFiles.prototype = {
 			}
 		});
 
+		if(Array.isArray(src)) {
+			src = src.slice(0);
+		}
+
 		glob(src, {cwd: this.src}, function(err, files) {
 				// self.addDependencies(files, dst);
 				err && self.error(err);

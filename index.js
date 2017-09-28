@@ -1,10 +1,10 @@
 'use strict';
-let path = require('path');
-let glob = require('glob-all');
-let Transform = require('stream').Transform;
-let Material = require('fuller-material-file');
+const path = require('path');
+const glob = require('glob-all');
+const Transform = require('stream').Transform;
+const Material = require('fuller-material-file');
 
-let SrcFiles = function(fuller, options) {
+const SrcFiles = function(fuller, options) {
   fuller.bind(this);
   this.src = options.src;
   this.dst = options.dst;
@@ -12,11 +12,9 @@ let SrcFiles = function(fuller, options) {
 
 SrcFiles.prototype = {
   build: function(src, dst) {
-    let self = this;
-
-    let next = new Transform({
+    const next = new Transform({
       objectMode: true,
-      transform: function(mat, enc, cb) {
+      transform: (mat, enc, cb) => {
         cb(null, mat);
       }
     });
@@ -25,26 +23,18 @@ SrcFiles.prototype = {
       src = src.slice(0);
     }
 
-    glob(src, { cwd: this.src }, function(err) {
-      err && self.error(err);
-    })
-    .on('match', function(f) {
-      let file = path.join(self.src, f);
-      let newMat = new Material({ id: dst, path: file })
-        .dst(path.join(self.dst, f))
-        .error(function(err) {
-          self.error(err);
-        });
-      self.addDependencies(file, dst);
-      next.write(newMat);
-    })
-    .on('end', function() {
-      next.end();
-    })
-    .on('error', function(err) {
-      self.error(err);
-    });
+    glob(src, { cwd: this.src }, err => err && this.error(err))
+      .on('match', f => {
+        const file = path.join(this.src, f);
+        const newMat = new Material({ id: dst, path: file })
+          .dst(path.join(this.dst, f))
+          .error(err => this.error(err));
 
+        this.addDependencies(file, dst);
+        next.write(newMat);
+      })
+      .on('end', () => next.end())
+      .on('error', err => this.error(err));
     return next;
   }
 };
